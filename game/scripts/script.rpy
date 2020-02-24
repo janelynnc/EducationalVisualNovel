@@ -18,7 +18,6 @@ define love_interest_keys = ['(they(li)','them(li)','their(li)','theirs(li)','th
 define gender_lookup = {}
 # The game starts here.
 
-
 init python:
     def replace_text(what):
         for key, value in gender_lookup.items():
