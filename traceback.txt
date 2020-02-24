@@ -1,26 +1,26 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/introScene.rpy", line 16, in script call
-    call partnerMinigame
-  File "game/partnerMinigame.rpy", line 203, in script
-    friend "Back on topic please?"
-Exception: Sayer 'friend' is not defined.
+  File "game/scripts/Chapter1/introScene.rpy", line 14, in script call
+    call applyingForTheLab
+  File "game/scripts/Chapter1/introScene.rpy", line 55, in script
+    Molly "Hey [player] I'm almost done with my application. How about you?"
+Exception: Sayer 'Molly' is not defined.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/introScene.rpy", line 16, in script call
-    call partnerMinigame
-  File "game/partnerMinigame.rpy", line 203, in script
-    friend "Back on topic please?"
+  File "game/scripts/Chapter1/introScene.rpy", line 14, in script call
+    call applyingForTheLab
+  File "game/scripts/Chapter1/introScene.rpy", line 55, in script
+    Molly "Hey [player] I'm almost done with my application. How about you?"
   File "C:\Users\Janelynn\Downloads\renpy-7.3.5-sdk\renpy\ast.py", line 678, in execute
     who = eval_who(self.who, self.who_fast)
   File "C:\Users\Janelynn\Downloads\renpy-7.3.5-sdk\renpy\ast.py", line 576, in eval_who
     raise Exception("Sayer '%s' is not defined." % who.encode("utf-8"))
-Exception: Sayer 'friend' is not defined.
+Exception: Sayer 'Molly' is not defined.
 
 Windows-8-6.2.9200
 Ren'Py 7.3.5.606
 Educational Visual Novel 1.0
-Fri Feb 21 10:52:17 2020
+Sun Feb 23 17:51:37 2020

@@ -9,9 +9,7 @@ image computer = "computer_idle.png"
 image poster = "poster_idle.png"
 image temperature = "temperature_idle.png"
 # The game starts here.
-define Scientist = Character("Scientist")
-define Friend = Character("Molly")
-define Teacher = Character("Teacher")
+
 init python:
     global obj1Clicked
     obj1Clicked = False
@@ -108,7 +106,7 @@ label flashbackMinigame:
     # images directory to show it.
     scene backgroundImg
 
-    Friend "Wow! Look at all of this! It’s amazing!"
+    player "Wow! Look at all of this! It’s amazing!"
     "I know! Isn’t this cool?! yelled another student."
 
     Teacher "Settle down, children. I know science is intriguing, but be careful you don’t touch anything."
@@ -124,18 +122,21 @@ label flashbackMinigame:
 
     python:
         playerName = renpy.input("Enter name here")
-        playerName = playerName.strip()
-        if playerName == "":
+        player_name = playerName.strip()
+        if player_name == "":
             playerName = "Riley"
-    define player = Character("[playerName]")
+
 
 
     Scientist "Nice to meet you [player] . Your name is an example of nominal data. Nominal means name. Nominal data are usually categories or descriptions. "
 
     Scientist "Other types of data include ratio and interval data. Both of these data types involve numbers. For interval data, zero can be set to mean whatever we want. While in ratio data, zero always means none. How many girls are there in the room?"
 
+    $male = False
+    $female = False
     menu:
         "Raise your hand":
+            $female = True
             pass
         "Don’t raise your hand":
             pass
@@ -144,9 +145,18 @@ label flashbackMinigame:
 
     menu:
         "Raise your hand":
+            $male = True
             pass
         "Don’t raise your hand":
             pass
+
+    python:
+        if(male is female):
+            store.gender_lookup = dict(zip(player_keys,nonbinary_pronouns))
+        elif(male is True):
+            store.gender_lookup = dict(zip(player_keys,male_pronouns))
+        else:
+            store.gender_lookup = dict(zip(player_keys,female_pronouns))
 
     "The number of boys and girls in this room is an example of ratio data. There could be zero boys in the room which would mean there are no boys in the room."
 
@@ -155,15 +165,15 @@ label flashbackMinigame:
 
     Friend "*whispers* This is so boring, I wish he’d stop talking and let us play with all the stuff in the room"
 
-    "The Scientist glances at you and molly"
+    "The Scientist glances at you and [Friend]"
 
     Scientist "And for Ordinal Data 1 could be you are totally bored by my lecture, and 5 could mean you’re excited to listen."
 
     Friend "That was oddly specific do you think he heard us?"
 
     menu:
-        "Not now Molly":
-            "Not now Molly"
+        "Not now [Friend]":
+            "Not now [Friend]"
         "Shh":
             "Shh"
         "I think he did":
@@ -189,7 +199,7 @@ label flashbackMinigame:
     a confirmed case or an unconfirmed case. We either have enough facts to say that a case is
     confirmed otherwise its unconfirmed. There are no maybes. "
 
-    "Molly dashes around the room. She bumps into a shelf with various chemicals, and a jar labelled tumbles off the shelf and is about to hit you."
+    "[Friend] dashes around the room. She bumps into a shelf with various chemicals, and a jar labelled tumbles off the shelf and is about to hit you."
 
     Teacher "Watch out [player]!"
 

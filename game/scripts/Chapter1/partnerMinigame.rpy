@@ -10,7 +10,7 @@ define LI = Character("LOVE_INTEREST")
 label partnerMinigame:
     scene backgroundFiller
 
-    "You decide to help [Friend] study for the interview. Afterall you'd be sad if you didn't get to see her in the lab"
+    "You decide to help [Friend] prepare for the lab meeting"
 
     Friend "Pointing at [LI] what's he doing here"
     player "He's here to help"
@@ -168,7 +168,7 @@ label partnerMinigame:
     LI "I know we're competing for the same position but ..."
     player "I dont see an issue with helping you."
     LI "Really?"
-    Friend "Heres a binary answer [player] means yes"
+    Friend "Heres a binary answer they(p) means yes"
 
     label ordinalDef:
         player "Ordinal data is"

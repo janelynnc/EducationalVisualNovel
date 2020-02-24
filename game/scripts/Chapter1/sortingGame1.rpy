@@ -51,38 +51,7 @@ label sortingGame1:
                 #xpos 0 ypos 0
 
 
-    "I think I'm going to be late. I better hurry I hope I make it in time"
-    "I run frantically down the street."
-    "In front of me I see a strange man in a lab coat staring out into the distance. "
-
-    menu:
-        "No time to stop. I got an interview to catch":
-            "I keep runninng"
-            "*Crash* the strange man drops his folders and papers scatter everywhere"
-            player "Ouch. Sorry Mister no time to stop I got an interview to catch"
-            "You look down and see some interesting notes. You recognize the labels on the folder
-            as the categories of data you learned as a kid"
-            player "On second thought, mister do you need some help?"
-            Scientist "*smirks* Always"
-
-            jump player_sorting
-
-        "Stop and observe":
-            "It wouldn't hurt to take a little break"
-            "The wind blows and you see papers come flying out"
-            "You catch one"
-            Scientist "Hey kid, mind helping me out"
-
-
-    menu:
-        "ignore":
-            Scientist "I guess I could keep all this classified top secret scientific info all to myself"
-            "I'm most definetly not falling for this."
-            Player "Oh yeah? What's so important about a few pieces of paper?"
-            Scientist "Why don't you help me and find out"
-
-        "sure":
-            "I'm already late anyways"
+    
 
     label player_sorting:
         call screen sorting_screen

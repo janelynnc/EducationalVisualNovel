@@ -11,7 +11,7 @@ label introSceneChapter:
 
     call discoverTheLab
 
-    # jump applyingForTheLab
+    call applyingForTheLab
 
     call partnerMinigame
 
@@ -22,25 +22,25 @@ label introSceneChapter:
     # return
 
 label discoverTheLab:
-    player "Molly? Molly?!"
+    Friend "[player]? [player]?!"
     player "AHHHHHH"
     "You wake up, faceplanted on the dusty floor. "
-    player "Molly? Are you okay?"
-    Friend "Yeah."
+    Friend "[player]? Are you okay?"
+    player "Yeah."
     Friend "Was it about that again?"
     player "Huh? Oh. No."
-    Friend "Then what?"
+    Frient "Then what?"
     player "Remember the field trip we took to SC**NCE LAB in the third grade?"
     Friend "I just remember that the teacher was HOT"
-    player "OMIGOD [Friend]"
-    player "...and that was the day you decided to pursue SCIENCE for the rest of your life."
+    player "OMIGOD [player], no way he's way too old."
+    Friend "...and that was the day you decided to pursue SCIENCE for the rest of your life."
     player "Yeah."
     Friend "It’s a shame you didn’t get to finish your degree in SCIENCE"
     "What a dream. It’s been five years since modern science has been erased from our lives."
     "Extra! Extra! Read all about it!"
     "Oh, it’s the paperboy."
-    player "Hey, Molly. Can you get the newspaper? I’m gonna make food."
-    Friend "Sure"
+    Friend "Hey, [player]. Can you get the newspaper? I’m gonna make food."
+    player "Sure"
     "You open the door to find the local paperboy throwing newpapers at people’s doorsteps."
     "A new lab is opening up, and they wanna create medicine!"
     "Medicine?"
@@ -51,3 +51,49 @@ label discoverTheLab:
 
     return
 label applyingForTheLab:
+    "[Friend] and I chased down the paper boy and recieved two applications for the lab"
+    Friend "Hey [player] I'm almost done with my application. How about you?"
+    player "Almost let me double check a few things"
+    "Name: [player]"
+
+    python:
+        seperator = ", "
+        pronouns = seperator.join(list(set(gender_lookup.values())))
+
+    "Gender pronouns: [pronouns]"
+
+    menu:
+        "Looks good":
+            pass
+        "Let me fix this":
+            call fixPronouns
+    "Would you be interested in dating"
+
+    menu:
+        "I'd be interested in dating a guy":
+            $gender_lookup.update(dict(zip(love_interest_keys,male_pronouns)))
+            pass
+        "I'd be interest in dating a girl":
+            $gender_lookup.update(dict(zip(love_interest_keys,female_pronouns)))
+            pass
+
+    "What a weird question, maybe its just my imagination. After all there aren't many options in this small outpost."
+    return
+
+label fixPronouns:
+    python:
+        seperator = ", "
+        male = seperator.join(list(set(male_pronouns)))
+        female = seperator.join(list(set(female_pronouns)))
+        nonbinary = seperator.join(list(set(nonbinary_pronouns)))
+
+    menu:
+        "[male]":
+            $store.gender_lookup = dict(zip(player_keys,male_pronouns))
+            pass
+        "[female]":
+            $store.gender_lookup = dict(zip(player_keys,female_pronouns))
+            pass
+        "[nonbinary]":
+            $store.gender_lookup = dict(zip(player_keys,nonbinary_pronouns))
+            pass
