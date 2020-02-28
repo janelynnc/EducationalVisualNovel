@@ -4,8 +4,9 @@
 # name of the character.
 
 define Scientist = Character("Scientist")
-
-define Friend = Character("Your Friend")
+define LI = Character("LOVE_INTEREST")
+define Rival = Character("Rival")
+define Friend = Character("Cutiepie")
 define playerName = "Me"
 define player = DynamicCharacter("playerName")
 
@@ -29,8 +30,7 @@ label start:
     # Show a background. This uses a placeholder by default, but you can
     # add a file (named either "bg room.png" or "bg room.jpg") to the
     # images directory to show it.
-    # jump introSceneChapter
-    jump sortingGame1
+    jump introSceneChapter
 
 
     # This ends the game.

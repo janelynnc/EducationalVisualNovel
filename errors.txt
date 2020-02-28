@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/scripts/Chapter1/sortingGame1.rpy", line 115: expected statement.
-    csll screen sortingScreen
-                             ^
+File "game/scripts/Chapter1/introScene.rpy", line 101: expected ':' not found.
+    menu
+        ^
 
 Ren'Py Version: Ren'Py 7.3.5.606
-Mon Feb 24 01:17:48 2020
+Thu Feb 27 23:31:29 2020

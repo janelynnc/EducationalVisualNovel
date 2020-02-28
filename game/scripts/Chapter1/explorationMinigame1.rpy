@@ -96,6 +96,9 @@ label describePoster:
 label describeThermometer:
     show temperature at showTemperature
     Friend "Oh! What is this?"
+
+    show backgroundfiller
+
     Scientist "That, my child, is a thermometer. It is a device that measures degrees of Farenheit and Celsius. This is a fine example of interval data. "
     return
 
@@ -181,7 +184,7 @@ label flashbackMinigame:
 
     Scientist "Or a scale from 1 to 3 on how well I heard you. One being I didn’t hear you well and three I heard everything you said. If I replied to this scale with a two, you would know that I heard more than nothing and less than everything. But you wouldn’t be able to tell exactly how much more than nothing, I heard. (*wink*)"
 
-    $Class = Character("The Class")
+    define Class = Character("The Class")
     Class "oooooh"
 
     Scientist "Thank you, feel free to look at things and ask questions"

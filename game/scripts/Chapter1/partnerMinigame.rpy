@@ -3,17 +3,18 @@
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
 
-define LI = Character("LOVE_INTEREST")
 
 # The game starts here.
 
 label partnerMinigame:
     scene backgroundFiller
 
-    "You decide to help [Friend] prepare for the lab meeting"
+    "You decide to help [Friend] prepare for the field study"
 
     Friend "Pointing at [LI] what's he doing here"
     player "He's here to help"
+    LI "Theres not much else to do here"
+    player "Right let's get started"
 
     # Show a background. This uses a placeholder by default, but you can
     # add a file (named either "bg room.png" or "bg room.jpg") to the
@@ -183,7 +184,7 @@ label partnerMinigame:
                 Friend "Sounds exactly like interval to me"
                 jump ordinalDef
             "Definition of Binary":
-                Player "Hold on. Let me start from the top"
+                player "Hold on. Let me start from the top"
                 jump ordinalDef
             "Definition of Ordinal":
                 pass
