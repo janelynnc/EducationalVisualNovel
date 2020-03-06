@@ -6,9 +6,10 @@
 define Scientist = Character("Scientist")
 define LI = Character("LOVE_INTEREST")
 define Rival = Character("Rival")
-define Friend = Character("Cutiepie")
+define Friend = Character("Molly")
 define playerName = "Me"
 define player = DynamicCharacter("playerName")
+define os = Character("Other Student")
 
 define Teacher = Character("Teacher")
 define male_pronouns = ['he','him','his','his','himself']

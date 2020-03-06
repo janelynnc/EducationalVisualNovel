@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/scripts/Chapter1/introScene.rpy", line 101: expected ':' not found.
-    menu
-        ^
+File "game/scripts/Chapter1/sortingGame1.rpy", line 475: is not terminated with a newline. (Check strings and parenthesis.)
+(Perhaps you left out a ` at the end of the first line.)
+    `               jump beaker_ops
 
 Ren'Py Version: Ren'Py 7.3.5.606
-Thu Feb 27 23:31:29 2020
+Fri Mar 06 11:28:49 2020
