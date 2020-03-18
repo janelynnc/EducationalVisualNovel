@@ -24,15 +24,14 @@ init python:
 init:
     transform showChemical:
         #replace x and y pos here
-        xcenter 130
-        ycenter 285
-        zoom .12
+        pos (446, 290)
+        zoom .13
 
     transform showComputer:
         #replace x and y pos here
-        xcenter 910
-        ycenter 285
-        zoom .50
+        pos (0,150)
+        zoom .98
+
     transform showPoster:
         #replace x and y pos here
          xpos 1152

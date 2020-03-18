@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/scripts/Chapter1/sortingGame1.rpy", line 475: is not terminated with a newline. (Check strings and parenthesis.)
-(Perhaps you left out a ` at the end of the first line.)
-    `               jump beaker_ops
+File "game/scripts/Chapter1/partnerMinigame.rpy", line 1: expected statement.
+    [definition.interval]
+                         ^
 
 Ren'Py Version: Ren'Py 7.3.5.606
-Fri Mar 06 11:28:49 2020
+Fri Mar 13 11:01:21 2020
