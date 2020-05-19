@@ -6,7 +6,7 @@
 
 
 ## Basics ######################################################################
-
+define build.itch_project = "jcamingue/Educational-Visual-Novel"
 ## A human-readable name of the game. This is used to set the default window
 ## title, and shows up in the interface and error reports.
 ##

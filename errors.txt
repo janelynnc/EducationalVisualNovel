@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/scripts/Chapter1/partnerMinigame.rpy", line 1: expected statement.
-    [definition.interval]
-                         ^
+File "game/scripts/Chapter1/introSceneChapter.rpy", line 348: expected a keyword argument, colon, or end of line.
+    hotspot (443, 466, 72, 72) action If(not interacting, true=[Jump("formInterest"),SetScreenVariable("option",5)], false=NullAction())]
+                                                                                                                                        ^
 
 Ren'Py Version: Ren'Py 7.3.5.606
-Fri Mar 13 11:01:21 2020
+Mon May 18 04:35:54 2020

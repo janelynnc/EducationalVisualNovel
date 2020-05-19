@@ -1,26 +1,79 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/scripts/Chapter1/introScene.rpy", line 19, in script call
-    call partnerMinigame
-  File "game/scripts/Chapter1/partnerMinigame.rpy", line 74, in script
-    jump IntervalDef
-ScriptError: could not find label 'IntervalDef'.
+  File "game/scripts/Chapter1/introSceneChapter.rpy", line 24, in script call
+    call applyingForTheLab from _call_applyingForTheLab
+  File "game/scripts/Chapter1/introSceneChapter.rpy", line 371, in script
+    pause
+  File "renpy/common/000statements.rpy", line 416, in execute_pause
+    renpy.pause()
+  File "game/scripts/Chapter1/introSceneChapter.rpy", line 313, in execute
+    screen form():
+  File "game/scripts/Chapter1/introSceneChapter.rpy", line 313, in execute
+    screen form():
+  File "game/scripts/Chapter1/introSceneChapter.rpy", line 316, in execute
+    imagemap:
+  File "game/scripts/Chapter1/introSceneChapter.rpy", line 347, in execute
+    showif(option != 5):
+  File "game/scripts/Chapter1/introSceneChapter.rpy", line 348, in execute
+    hotspot (443, 466, 72, 72) action If(not interacting, true=[Jump("formInterest"),SetVariable("option",5),Show(form)], false=NullAction())
+  File "game/scripts/Chapter1/introSceneChapter.rpy", line 348, in keywords
+    hotspot (443, 466, 72, 72) action If(not interacting, true=[Jump("formInterest"),SetVariable("option",5),Show(form)], false=NullAction())
+NameError: name 'form' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/scripts/Chapter1/introScene.rpy", line 19, in script call
-    call partnerMinigame
-  File "game/scripts/Chapter1/partnerMinigame.rpy", line 74, in script
-    jump IntervalDef
-  File "C:\Users\Janelynn\Downloads\renpy-7.3.5-sdk\renpy\ast.py", line 1697, in execute
-    rv = renpy.game.script.lookup(target)
-  File "C:\Users\Janelynn\Downloads\renpy-7.3.5-sdk\renpy\script.py", line 898, in lookup
-    raise ScriptError("could not find label '%s'." % str(original))
-ScriptError: could not find label 'IntervalDef'.
+  File "game/scripts/Chapter1/introSceneChapter.rpy", line 24, in script call
+    call applyingForTheLab from _call_applyingForTheLab
+  File "game/scripts/Chapter1/introSceneChapter.rpy", line 371, in script
+    pause
+  File "C:\Users\Janelynn\Downloads\renpy-7.3.5-sdk\renpy\ast.py", line 1949, in execute
+    self.call("execute")
+  File "C:\Users\Janelynn\Downloads\renpy-7.3.5-sdk\renpy\ast.py", line 1937, in call
+    return renpy.statements.call(method, parsed, *args, **kwargs)
+  File "C:\Users\Janelynn\Downloads\renpy-7.3.5-sdk\renpy\statements.py", line 277, in call
+    return method(parsed, *args, **kwargs)
+  File "renpy/common/000statements.rpy", line 416, in execute_pause
+    renpy.pause()
+  File "C:\Users\Janelynn\Downloads\renpy-7.3.5-sdk\renpy\exports.py", line 1480, in pause
+    rv = renpy.ui.interact(mouse='pause', type='pause', roll_forward=roll_forward)
+  File "C:\Users\Janelynn\Downloads\renpy-7.3.5-sdk\renpy\ui.py", line 297, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
+  File "C:\Users\Janelynn\Downloads\renpy-7.3.5-sdk\renpy\display\core.py", line 2702, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, **kwargs)
+  File "C:\Users\Janelynn\Downloads\renpy-7.3.5-sdk\renpy\display\core.py", line 3094, in interact_core
+    root_widget.visit_all(lambda i : i.per_interact())
+  File "C:\Users\Janelynn\Downloads\renpy-7.3.5-sdk\renpy\display\core.py", line 541, in visit_all
+    d.visit_all(callback, seen)
+  File "C:\Users\Janelynn\Downloads\renpy-7.3.5-sdk\renpy\display\core.py", line 541, in visit_all
+    d.visit_all(callback, seen)
+  File "C:\Users\Janelynn\Downloads\renpy-7.3.5-sdk\renpy\display\core.py", line 541, in visit_all
+    d.visit_all(callback, seen)
+  File "C:\Users\Janelynn\Downloads\renpy-7.3.5-sdk\renpy\display\screen.py", line 430, in visit_all
+    callback(self)
+  File "C:\Users\Janelynn\Downloads\renpy-7.3.5-sdk\renpy\display\core.py", line 3094, in <lambda>
+    root_widget.visit_all(lambda i : i.per_interact())
+  File "C:\Users\Janelynn\Downloads\renpy-7.3.5-sdk\renpy\display\screen.py", line 440, in per_interact
+    self.update()
+  File "C:\Users\Janelynn\Downloads\renpy-7.3.5-sdk\renpy\display\screen.py", line 625, in update
+    self.screen.function(**self.scope)
+  File "game/scripts/Chapter1/introSceneChapter.rpy", line 313, in execute
+    screen form():
+  File "game/scripts/Chapter1/introSceneChapter.rpy", line 313, in execute
+    screen form():
+  File "game/scripts/Chapter1/introSceneChapter.rpy", line 316, in execute
+    imagemap:
+  File "game/scripts/Chapter1/introSceneChapter.rpy", line 347, in execute
+    showif(option != 5):
+  File "game/scripts/Chapter1/introSceneChapter.rpy", line 348, in execute
+    hotspot (443, 466, 72, 72) action If(not interacting, true=[Jump("formInterest"),SetVariable("option",5),Show(form)], false=NullAction())
+  File "game/scripts/Chapter1/introSceneChapter.rpy", line 348, in keywords
+    hotspot (443, 466, 72, 72) action If(not interacting, true=[Jump("formInterest"),SetVariable("option",5),Show(form)], false=NullAction())
+  File "<screen language>", line 348, in <module>
+NameError: name 'form' is not defined
 
 Windows-8-6.2.9200
 Ren'Py 7.3.5.606
 Educational Visual Novel 1.0
-Fri Mar 13 12:24:56 2020
+Mon May 18 04:41:05 2020

@@ -1,33 +1,33 @@
-Fri Mar 13 15:08:45 2020
+Mon May 18 15:51:19 2020
 Windows-8-6.2.9200
 Ren'Py 7.3.5.606
  
 
-Bootstrap to the start of init.init took 0.07s
-Early init took 0.00s
+Bootstrap to the start of init.init took 0.09s
+Early init took 0.01s
 Loader init took 0.03s
 Loading error handling took 0.03s
-Loading script took 0.12s
+Loading script took 0.19s
 Loading save slot metadata. took 0.05s
 Loading persistent took 0.00s
 Importing _renpysteam: ImportError('No module named _renpysteam',)
-Running init code took 0.09s
+Running init code took 0.11s
 Loading analysis data took 0.06s
 Analyze and compile ATL took 0.00s
 Index archives took 0.00s
-Dump and make backups. took 0.07s
+Dump and make backups. took 0.09s
 Cleaning cache took 0.00s
 Making clean stores took 0.00s
-Initial gc. took 0.02s
-DPI scale factor: 2.000000
-Creating interface object took 0.06s
+Initial gc. took 0.03s
+DPI scale factor: 2.500000
+Creating interface object took 0.07s
 Cleaning stores took 0.00s
-Init translation took 0.02s
+Init translation took 0.03s
 Build styles took 0.01s
-Load screen analysis took 0.05s
+Load screen analysis took 0.04s
 Analyze screens took 0.00s
 Save screen analysis took 0.00s
-Prepare screens took 0.08s
+Prepare screens took 0.09s
 Save pyanalysis. took 0.00s
 Save bytecode. took 0.00s
 Running _start took 0.00s
@@ -36,10 +36,10 @@ Interface start took 0.04s
 primary display bounds: (0, 0, 3200, 1800)
 swap interval: 1 frames
 Windowed mode.
-Screen sizes: virtual=(1280, 720) physical=(2976, 1674) drawable=(2976, 1674)
+Screen sizes: virtual=(1280, 720) physical=(2853, 1605) drawable=(2853, 1605)
 Vendor: 'Intel'
 Renderer: 'Intel(R) HD Graphics 520'
-Version: '4.4.0 - Build 21.20.16.4550'
+Version: '4.6.0 - Build 26.20.100.7325'
 Display Info: None
 Fixed-function is blacklisted.
 Extensions:
@@ -48,6 +48,7 @@ Extensions:
     GL_AMD_vertex_shader_layer
     GL_AMD_vertex_shader_viewport_index
     GL_ARB_ES2_compatibility
+    GL_ARB_ES3_1_compatibility
     GL_ARB_ES3_compatibility
     GL_ARB_arrays_of_arrays
     GL_ARB_base_instance
@@ -61,14 +62,17 @@ Extensions:
     GL_ARB_compatibility
     GL_ARB_compressed_texture_pixel_storage
     GL_ARB_compute_shader
+    GL_ARB_conditional_render_inverted
     GL_ARB_conservative_depth
     GL_ARB_copy_buffer
     GL_ARB_copy_image
+    GL_ARB_cull_distance
     GL_ARB_debug_output
     GL_ARB_depth_buffer_float
     GL_ARB_depth_clamp
     GL_ARB_depth_texture
     GL_ARB_derivative_control
+    GL_ARB_direct_state_access
     GL_ARB_draw_buffers
     GL_ARB_draw_buffers_blend
     GL_ARB_draw_elements_base_vertex
@@ -88,6 +92,8 @@ Extensions:
     GL_ARB_framebuffer_sRGB
     GL_ARB_geometry_shader4
     GL_ARB_get_program_binary
+    GL_ARB_get_texture_sub_image
+    GL_ARB_gl_spirv
     GL_ARB_gpu_shader5
     GL_ARB_gpu_shader_fp64
     GL_ARB_half_float_pixel
@@ -105,9 +111,11 @@ Extensions:
     GL_ARB_multitexture
     GL_ARB_occlusion_query
     GL_ARB_occlusion_query2
+    GL_ARB_pipeline_statistics_query
     GL_ARB_pixel_buffer_object
     GL_ARB_point_parameters
     GL_ARB_point_sprite
+    GL_ARB_polygon_offset_clamp
     GL_ARB_post_depth_coverage
     GL_ARB_program_interface_query
     GL_ARB_provoking_vertex
@@ -120,8 +128,11 @@ Extensions:
     GL_ARB_seamless_cube_map
     GL_ARB_seamless_cubemap_per_texture
     GL_ARB_separate_shader_objects
+    GL_ARB_shader_atomic_counter_ops
     GL_ARB_shader_atomic_counters
     GL_ARB_shader_bit_encoding
+    GL_ARB_shader_draw_parameters
+    GL_ARB_shader_group_vote
     GL_ARB_shader_image_load_store
     GL_ARB_shader_image_size
     GL_ARB_shader_objects
@@ -129,15 +140,18 @@ Extensions:
     GL_ARB_shader_stencil_export
     GL_ARB_shader_storage_buffer_object
     GL_ARB_shader_subroutine
+    GL_ARB_shader_texture_image_samples
     GL_ARB_shading_language_100
     GL_ARB_shading_language_420pack
     GL_ARB_shading_language_packing
     GL_ARB_shadow
+    GL_ARB_spirv_extensions
     GL_ARB_stencil_texturing
     GL_ARB_sync
     GL_ARB_tessellation_shader
     GL_ARB_texture_barrier
     GL_ARB_texture_border_clamp
+    GL_ARB_texture_buffer_object
     GL_ARB_texture_buffer_object_rgb32
     GL_ARB_texture_buffer_range
     GL_ARB_texture_compression
@@ -149,6 +163,7 @@ Extensions:
     GL_ARB_texture_env_combine
     GL_ARB_texture_env_crossbar
     GL_ARB_texture_env_dot3
+    GL_ARB_texture_filter_anisotropic
     GL_ARB_texture_float
     GL_ARB_texture_gather
     GL_ARB_texture_mirror_clamp_to_edge
@@ -169,6 +184,7 @@ Extensions:
     GL_ARB_transform_feedback2
     GL_ARB_transform_feedback3
     GL_ARB_transform_feedback_instanced
+    GL_ARB_transform_feedback_overflow_query
     GL_ARB_transpose_matrix
     GL_ARB_uniform_buffer_object
     GL_ARB_vertex_array_bgra
@@ -242,8 +258,9 @@ Extensions:
     GL_INTEL_performance_query
     GL_KHR_blend_equation_advanced
     GL_KHR_blend_equation_advanced_coherent
+    GL_KHR_context_flush_control
     GL_KHR_debug
-    GL_KHR_texture_compression_astc_hdr
+    GL_KHR_no_error
     GL_KHR_texture_compression_astc_ldr
     GL_NV_blend_square
     GL_NV_conditional_render
@@ -254,6 +271,7 @@ Extensions:
     GL_SGIS_texture_lod
     GL_SUN_multi_draw_arrays
     GL_WIN_swap_hint
+    WGL_EXT_swap_control
 Number of texture units: 8
 Using shader environment.
 Using FBO RTT.
@@ -267,15 +285,4 @@ Texture testing:
 - 256px textures work.
 - 512px textures work.
 - 1024px textures work.
-- 2048px textures work.
-Root FBO is: 0
-FBO Maximum Texture Size: 2048
-Total time until interface ready: 1.92899990082s
-
-primary display bounds: (0, 0, 3200, 1800)
-swap interval: 1 frames
-Windowed mode.
-Screen sizes: virtual=(1280, 720) physical=(3200, 1675) drawable=(3200, 1675)
-Root FBO is: 0
-FBO Maximum Texture Size: 2048
-The window was minimized.
+- 2048px textures w

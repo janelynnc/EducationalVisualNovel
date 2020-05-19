@@ -14,18 +14,19 @@
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
 image backgroundImg = "Backgrounds/abandoned_lab.png"
-image nominal = "SortingObjects/nominalfolder.png"
-image binary = "SortingObjects/binaryfolder.png"
-image ordinal = "SortingObjects/ordinalFolder.png"
-image ratio = "SortingObjects/ratioFolder.png"
-image interval = "SortingObjects/intervalFolder.png"
+image nominal = At("SortingObjects/nominalfolder.png",zoom(.8))
+image binary = At("SortingObjects/binaryfolder.png",zoom(.8))
+image ordinal = At("SortingObjects/ordinalFolder.png",zoom(.8))
+image ratio = At("SortingObjects/ratioFolder.png",zoom(.8))
+image interval = At("SortingObjects/intervalFolder.png",zoom(.8))
 
 #npc objects to sort
 image placeholder = "computer_idle.png"
 image petriDish = At("SortingObjects/PertiDish.png",zoom(.5),pivotCenter(0.5,.85))
-image microscopeSlides = At("SortingObjects/MicroscopeSlides.png",zoom(.5),pivotCenter(0.5,0.5))
+image microscopeSlides = At("SortingObjects/MicroscopeSlidesDeck2.png",zoom(.5),pivotCenter(0.5,0.5))
 image beakers = At("SortingObjects/beakers.png",zoom(.25),pivotCenter(0.5,0))
 label question(obj,category):
+    scene backgroundImg
     if(category == "nominal"):
         show nominal
     elif(category == "binary"):
@@ -47,6 +48,7 @@ label question(obj,category):
     return
 
 label wrongAnswer(category):
+    scene backgroundImg
     if(category == "nominal"):
         show nominal
     elif(category == "binary"):
@@ -57,30 +59,28 @@ label wrongAnswer(category):
         show ratio
     else:
         show interval
-    show backgroundImgs
+    show backgroundImg
+    show Scientist
     Scientist "Hold on this does not belong in [category]"
     return
 
 init python in sortingGame1:
-    player_targets = ["tape measure",
+    player_targets = [
     "age groups",
-    "test tubes",
-    "scale",
-    "stop watch"]
-    player_imgs = ["SortingObjects/beakers.png",
+    "stop watch",
+    "red blood cells"]
+    player_imgs = [
     "SortingObjects/Torn Page.png",
-    "chemicals_idle.png",
-    "chemicals_idle.png",
-    "SortingObjects/DirtyTimer.png"]
-    descriptions = ["An old dirty tape measure. They probably used this collect data like height",
+    "SortingObjects/DirtyTimer.png",
+    "SortingObjects/RedBloodCellsPage.png"]
+    descriptions = [
     "A torn page of a lab report with death rates categorized by age ranges",
-    "Test tubes labeled with different names. The notebook saids these names refer to some sort of chemical mixture",
-    "This scale was probably used to weigh different samples. Maybe we can re-use to meeasure ...",
-    "A broken stop watch. Looks like what ever they were timing only to 3 seconds"]
-    img_sizes = [.25,.25,.25,.25,.25]
-    nominal = {"test tubes"}
-    interval = {"tape measure","stop watch"}
-    ratio = {"scale"}
+    "A broken stop watch. Looks like what ever they were timing only to 3 seconds",
+    "Looks like a test report on a patient's red blood cell concentration"]
+    img_sizes = [.5,.40,.20,.20,.20]
+    nominal = {}
+    interval = {"stop watch"}
+    ratio = {"red blood cells"}
     binary = {}
     ordinal = {"age groups"}
     categories = {'nominal':nominal,'interval':interval,'ratio':ratio,'binary':binary,'ordinal':ordinal}
@@ -88,6 +88,7 @@ init python in sortingGame1:
     objNum = 0
     score = 0
     matching = False;
+
     def shouldReset(drop_obj,drag_obj):
         if len(drag_obj) == 0:
             return
@@ -112,15 +113,22 @@ init python in sortingGame1:
                 renpy.jump("next_try")
 
         renpy.restart_interaction()
+    def shrink(dragged_objs):
+        if len(dragged_objs) == 0:
+            return
+        dragged_objs[0].w = dragged_objs[0].w/2
+        dragged_objs[0].h = dragged_objs[0].h/2
+        renpy.force_full_redraw()
 
 screen bubbleSay(what,ctc,category,matching):
     modal True
     $clickToContinue = ctc
     window:
-        xpos 350 ypos 100
-        xmaximum 600 ymaximum 100
         id "window"
-        text what
+        text what:
+            xpos gui.dialogue_xpos
+            xsize gui.dialogue_width
+            ypos gui.dialogue_ypos
 
     showif clickToContinue:
         button:
@@ -136,10 +144,11 @@ screen bubbleSay(what,ctc,category,matching):
 screen description(what):
     zorder 10
     window:
-        xpos 350 ypos 100
-        xmaximum 600 ymaximum 100
         id "window"
-        text what
+        text what:
+            xpos gui.dialogue_xpos
+            xsize gui.dialogue_width
+            ypos gui.dialogue_ypos
 
 
 screen sortingScreen(n):
@@ -150,79 +159,79 @@ screen sortingScreen(n):
         drag:
             as target
             drag_name sortingGame1.player_targets[n]
-            child At(sortingGame1.player_imgs[n],zoom(sortingGame1.img_sizes[n]))
+            idle_child At(sortingGame1.player_imgs[n],zoom(sortingGame1.img_sizes[n]))
+            hover_child At(sortingGame1.player_imgs[n],zoom(sortingGame1.img_sizes[n]))
+            selected_hover_child At(sortingGame1.player_imgs[n],zoom(sortingGame1.img_sizes[n]/2))
+            dragged
             droppable False
-            xpos 400 ypos 400
+            xcenter 640 ycenter 400
         # what you wanna drog item to
         drag:
             drag_name "nominal"
             child "SortingObjects/nominalfolder.png"
             draggable False
             dropped sortingGame1.shouldReset
-            xpos 100 ypos 100
+            xpos 50 ypos 30
 
         drag:
             drag_name "binary"
             child "SortingObjects/binaryfolder.png"
             draggable False
             dropped sortingGame1.shouldReset
-            xpos 300 ypos 100
+            xpos 300 ypos 30
 
         drag:
             drag_name "ordinal"
             child "SortingObjects/ordinalfolder.png"
             draggable False
             dropped sortingGame1.shouldReset
-            xpos 500 ypos 100
+            xpos 550 ypos 30
 
         drag:
             drag_name "ratio"
             child "SortingObjects/ratiofolder.png"
             draggable False
             dropped sortingGame1.shouldReset
-            xpos 700 ypos 100
+            xpos 750 ypos 30
 
         drag:
             drag_name "interval"
             child "SortingObjects/intervalfolder.png"
             draggable False
             dropped sortingGame1.shouldReset
-            xpos 900 ypos 100
+            xpos 1000 ypos 30
 
 transform nominalFolder(timing = 0):
-    xpos 150 ypos 100
-
+    xpos 50 ypos 100
 transform binaryFolder(timing = 0):
-    xpos 400 ypos 100
-
+    xpos 300 ypos 100
 transform ordinalFolder(timing = 0):
-    xpos 650 ypos 100
-
+    xpos 550 ypos 100
 transform ratioFolder(timing = 0):
-    xpos 900 ypos 100
-
+    xpos 800 ypos 100
 transform intervalFolder(timing = 0):
-    xpos 1150 ypos 100
+    xpos 1050 ypos 100
 
 
 
 label sortingGame1:
     scene outside
+    play music "audio/Music/The-Secret-Lab.mp3"
     "Our little group decided to take a trip to an abandoned lab. There are signs scattered everywhere that literally tell us not to enter. "
-    player "'DANGER?' 'MANDATORY QUARANTINE ZONE?'"
+    player "{size=+10}'DANGER?' 'MANDATORY QUARANTINE ZONE?' {/size}"
 
     LI "[Scientist], you sure this is safe? What are we doing here anyways? "
 
     show Friend
-    Friend "*whispers* Do you think he’s here to murder us and harvest our organs?"
+    Friend "{size=12}*whispers* Do you think he’s here to murder us and harvest our organs?{/size}"
 
-    player "Yeah [Friend], he’s totally going to do that."
+    player "{size=12}Yeah [Friend], he’s totally going to do that.{/size}"
 
     show LI at right with moveinright
     show Friend at left with move
-    LI "Afterwards, he is gonna turn them into soup and serve them to the local children."
+    LI "{size=12}Afterwards, he is gonna turn them into soup and serve them to the local children.{/size}"
 
-    Friend "Ew. I swear, you two can be so messed up sometimes."
+    Friend "{size=12}Ew. I swear, you two can be so messed up sometimes.{/size}"
 
     hide Friend with moveoutleft
 
@@ -231,11 +240,13 @@ label sortingGame1:
 
     LI "Yeah"
 
-    Scientist "Then it should be fine. We’re here to collect some evidence and data. They used to conduct animal studies here and observe the subjects for reactions. We might be able to find something useful."
+    Scientist "Then it should be fine. We’re here to collect some evidence and data."
+    Scientist "They used to conduct animal studies here and observe the subjects for reactions. We might be able to find something useful."
 
     player "And how do you know about this place?"
 
-    Scientist "That’s a secret. Anyways, we’re here. Everyone pair up and make sure you’re wearing gloves. All of you are going to be sifting through items and placing them in the correct category."
+    Scientist "I'm afraid that's classified"
+    Scientist "Anyways, we’re here. Everyone pair up and make sure you’re wearing gloves. All of you are going to be sifting through items and placing them in the correct category."
     scene lab
     hide Scientist
     show LI at center with move
@@ -245,16 +256,15 @@ label sortingGame1:
 
     LI "Only if you’re there to help guide me."
 
-    player "If I didn’t know any better, I’d assume you were sucking up to me."
+    player "If I didn’t know any better, I’d assume you were trying to impress me again."
 
     hide LI
     show Scientist at left
     Scientist "Kids get to work! This data isn’t going to collect itself."
-    show Friend at right
-    Friend "And what will you be doing?"
-
-    Scientist "Observing of course."
     hide Scientist
+    show Friend Wink at right
+    Friend "Enjoy your date [player]!"
+    player "It's not a date!"
     hide Friend
 
     show LI
@@ -475,6 +485,7 @@ label sortingGame1:
                 LI "So that means the data is ratio"
                 show beakers at ratioFolder  with MoveTransition(3.0)
                 pause(3.0)
+                hide beakers
             "Can we add and subtract the numbers?" if not pickedInterval:
                 $pickedInterval = True
                 player "I think we can add and subtract these numbers from each other"
@@ -493,28 +504,42 @@ label sortingGame1:
                 jump beaker_ops
 
 
-
+        $sortingGame1.objNum = 0
 
     #call npc_sorting
+
     label player_sorting:
-        scene
         show screen description(sortingGame1.descriptions[sortingGame1.objNum])
         call screen sortingScreen(sortingGame1.objNum)
         label next_try:
+            hide Scientist
             $sortingGame1.objNum = sortingGame1.objNum + 1
             if(sortingGame1.matching):
                 $score = score + 1
             $_return = False
             if(sortingGame1.objNum < len(sortingGame1.player_targets)):
                 jump player_sorting
-        "Done"
-    show Scientist
-    Scientist "Alright! Everyone got what they needed? Let’s head back to the lab. I’ll debrief you on why data is important."
-    hide Scientist
-    show LI
-    "Glancing at [LI],  I pull [LI] aside."
-    player "I am sorry if I was a little pushy today. I hope I did not scare you"
-    LI "There is nothing wrong with a little back and forth. Plus, I think its kinda cute"
-    "It must be the all the lifting I did, but I am starting to feeling my heart beat faster than usual."
 
-    return
+        hide screen sortingScreen
+
+    label doneSorting:
+        scene backgroundImg
+        show Scientist
+        Scientist "Alright! Everyone got what they needed? Let’s head back to the lab. I’ll debrief you on why data is important."
+        hide Scientist
+        play music "audio/Music/Blue-Ridge_Looping.mp3"
+        show LI
+        "Glancing at [LI],  I pull [LI] aside."
+        player "I am sorry if I was a little pushy today. I hope I did not scare you"
+        LI "There is nothing wrong with a little back and forth. Plus, I think its kinda cute"
+        "It must be the all the lifting I did, but I am starting to feeling my heart beat faster than usual."
+        hide LI
+        scene
+        show Friend
+        Friend "So what does the data show?"
+        player "Oh right the data."
+        player "Let's take a look."
+        player "..."
+        Friend "What is it?"
+        player "I think you're right. I think I might be in love."
+        return

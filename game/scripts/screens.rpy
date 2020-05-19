@@ -131,6 +131,7 @@ style namebox_label is say_label
 style window:
     xalign 0.5
     xfill True
+    yfill True
     yalign gui.textbox_yalign
     ysize gui.textbox_height
 
@@ -223,14 +224,15 @@ style choice_vbox:
     xalign 0.5
     ypos 270
     yanchor 0.5
-
     spacing gui.choice_spacing
 
 style choice_button is default:
     properties gui.button_properties("choice_button")
+    yminimum 50
 
 style choice_button_text is default:
     properties gui.button_text_properties("choice_button")
+    yalign 0.5
 
 
 ## Quick Menu screen ###########################################################
@@ -242,12 +244,11 @@ screen quick_menu():
 
     ## Ensure this appears on top of other screens.
     zorder 100
-
     if quick_menu:
 
         hbox:
             style_prefix "quick"
-
+            ypos 700
             xalign 0.5
             yalign 1.0
 
@@ -397,13 +398,16 @@ style main_menu_vbox:
     yoffset -20
 
 style main_menu_text:
-    properties gui.text_properties("main_menu", accent=True)
+    properties gui.text_properties("main_menu")
+    color "#5e5d5c"
 
 style main_menu_title:
     properties gui.text_properties("title")
+    color "#5e5d5c"
 
 style main_menu_version:
     properties gui.text_properties("version")
+    color "#5e5d5c"
 
 
 ## Game Menu screen ############################################################
@@ -525,7 +529,7 @@ style game_menu_label:
 
 style game_menu_label_text:
     size gui.title_text_size
-    color gui.accent_color
+    color "#5e5d5c"
     yalign 0.5
 
 style return_button:
@@ -834,7 +838,7 @@ style pref_label:
 
 style pref_label_text:
     yalign 1.0
-
+    color "#5e5d5c"
 style pref_vbox:
     xsize 225
 
@@ -1429,7 +1433,8 @@ screen quick_menu():
             xalign 0.5
             yalign 1.0
 
-            textbutton _("Back") action Rollback()
+
+            #textbutton _("Back") action Rollback()
             textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True)
             textbutton _("Auto") action Preference("auto-forward", "toggle")
             textbutton _("Menu") action ShowMenu()
