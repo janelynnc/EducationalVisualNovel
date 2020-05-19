@@ -6,12 +6,15 @@
 # The game starts here.
 image room = "Backgrounds/room.png"
 image outside = "Backgrounds/Outside.png"
+image outside mark = "Backgrounds/OutsideWithMark.png"
+image outside cave = "Backgrounds/OutsideofCave.png"
 image cave = "Backgrounds/NewCave.png"
 image cave door = "Backgrounds/CaveDoor.png"
 image cave door open = "Backgrounds/OpenedCaveDoor.png"
 image cave door app = "Backgrounds/AppsCaveDoor.png"
 image indoor = "Backgrounds/InsideCaveDoor.png"
 image lab = "Backgrounds/LabDirty.png"
+image rock = "Backgrounds/RockCloseUp.png"
 label introSceneChapter:
 
     call flashbackMinigame from _call_flashbackMinigame
@@ -204,7 +207,7 @@ label wakeUp:
     return
 
 label rivalMeeting:
-    scene outside with dissolve
+    scene outside mark with dissolve
     "Some time later, you see a smoldering fire and a makeshift tent."
     player "Maybe we can trade for some water with whoever lives here."
     show Friend
@@ -230,7 +233,16 @@ label rivalMeeting:
     play sound "audio/SFX/refusal_1_karen.mp3"
     Rival "I'm doing real research and don't have time for your riffraff."
     player "Fine. We're leaving"
-    "Well that was a waste of time."
+    player "Well that was a waste of time."
+    Friend "Not a complete waste of time."
+    Friend "While you we're busy talking, I collected some quantitative data."
+    Friend "Take look at this."
+    scene rock
+    pause
+    Friend "Doesn't this symbol look familiar?"
+    player "I looks like the ones on the map."
+    Friend "And the one we found at the shelter."
+    player "We must be halfway there."
     stop music
     return
 
@@ -298,13 +310,19 @@ label discoverTheLab:
     Friend "Are you sure we should be trusting a random notebook from a scientist?"
     Friend "You remember they caused this whole mess right?"
     Friend "It’s been ten years since the apocalypse. Yet, people are still afraid of scientist and science."
-    scene cave
     player "We don't know that. Plus, we're already here."
+    scene outside cave
+    Friend "Are you sure this is the place?"
+    Friend "Just looks like a cave to me."
+    player "Well lets take a closer look."
+    "I see a big wooden door."
+    scene cave
+    Friend "You go first, afterall this is your idea."
     $renpy.music.set_volume(1, delay=0, channel='sound')
     play sound "audio/SFX/Knocking-on-door-two-knocks.mp3"
     scene cave door
-    Friend "{size=+10}*knock* *knock*{/size}"
-    Friend "Hello? Anybody there?"
+    player "{size=+10}*knock* *knock*{/size}"
+    player "Hello? Anybody there?"
     return
 
 init python in puns:
