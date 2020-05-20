@@ -670,11 +670,11 @@ label fixPronouns:
 
     menu:
         "[male]":
-            $store.gender_lookup = dict(zip(player_keys,male_pronouns))
+            $store.gender_lookup.update(dict(zip(player_keys,male_pronouns)))
             pass
         "[female]":
-            $store.gender_lookup = dict(zip(player_keys,female_pronouns))
+            $store.gender_lookup.update(dict(zip(player_keys,female_pronouns)))
             pass
         "[nonbinary]":
-            $store.gender_lookup = dict(zip(player_keys,nonbinary_pronouns))
+            $store.gender_lookup.update(dict(zip(player_keys,nonbinary_pronouns)))
             pass
