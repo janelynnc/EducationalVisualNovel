@@ -49,16 +49,6 @@ label question(obj,category):
 
 label wrongAnswer(category):
     scene backgroundImg
-    if(category == "nominal"):
-        show nominal
-    elif(category == "binary"):
-        show binary
-    elif(category == "ordinal"):
-        show ordinal
-    elif(category == "ratio"):
-        show ratio
-    else:
-        show interval
     show backgroundImg
     show Scientist
     Scientist "Hold on this does not belong in [category]"
@@ -74,9 +64,9 @@ init python in sortingGame1:
     "SortingObjects/DirtyTimer.png",
     "SortingObjects/RedBloodCellsPage.png"]
     descriptions = [
-    "A torn page of a lab report with death rates categorized by age ranges",
-    "A broken stop watch. Looks like what ever they were timing only to 3 seconds",
-    "Looks like a test report on a patient's red blood cell concentration"]
+    "A torn page of a lab report with death rates categorized by age ranges.",
+    "A broken stop watch. Looks like what ever they were timing only to 3 seconds.",
+    "Looks like a test report showing a patient's red blood cell count."]
     img_sizes = [.5,.40,.20,.20,.20]
     nominal = {}
     interval = {"stop watch"}
@@ -84,7 +74,7 @@ init python in sortingGame1:
     binary = {}
     ordinal = {"age groups"}
     categories = {'nominal':nominal,'interval':interval,'ratio':ratio,'binary':binary,'ordinal':ordinal}
-    player_correct = {'nominal':'Yep looks {color=#259ce6}nominal{/color} to me','interval': 'good job!', 'ratio': 'looks good to me', 'binary': " Between correct and incorrect. I would say correct", 'ordinal': "I see you got everything in order. Get it order and ordinal?"}
+    player_correct = {'nominal':'Yep looks {color=#259ce6}nominal{/color} to me','interval': 'Good job!', 'ratio': 'Looks good to me.', 'binary': " Between correct and incorrect. I would say correct", 'ordinal': "I see you got everything in order. Get it order and ordinal?"}
     objNum = 0
     score = 0
     matching = False;
@@ -202,15 +192,15 @@ screen sortingScreen(n):
             xpos 1000 ypos 30
 
 transform nominalFolder(timing = 0):
-    xpos 50 ypos 100
+    xpos 50 ypos 30
 transform binaryFolder(timing = 0):
-    xpos 300 ypos 100
+    xpos 300 ypos 30
 transform ordinalFolder(timing = 0):
-    xpos 550 ypos 100
+    xpos 550 ypos 30
 transform ratioFolder(timing = 0):
-    xpos 800 ypos 100
+    xpos 800 ypos 30
 transform intervalFolder(timing = 0):
-    xpos 1050 ypos 100
+    xpos 1050 ypos 30
 
 
 
@@ -246,6 +236,7 @@ label sortingGame1:
     player "And how do you know about this place?"
 
     Scientist "I'm afraid that's classified"
+    player "By who?"
     Scientist "Anyways, we’re here. Everyone pair up and make sure you’re wearing gloves. All of you are going to be sifting through items and placing them in the correct category."
     scene lab
     hide Scientist
